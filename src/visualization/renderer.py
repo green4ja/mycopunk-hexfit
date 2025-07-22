@@ -11,9 +11,9 @@ def draw_hexagon(ax, center, size, color='blue'):
     return (center[0], center[1])  # Return center for connection lines
 
 def hex_to_pixel(col, row, size=1.0):
-    """Convert hex coordinates to pixel coordinates for pointy-topped, even-q vertical layout (columns 0,2,4 are higher)."""
+    """Pointy-topped, even-q vertical layout (columns 0,2,4 are higher)."""
     x = size * np.sqrt(3) * col
-    y = size * (1.5 * row + 0.75 * (col % 2))
+    y = size * 1.5 * row + (0.75 * size if col % 2 == 1 else 0)
     return (x, y)
 
 def get_shape_color(shape):
