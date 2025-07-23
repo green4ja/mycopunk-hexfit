@@ -7,7 +7,13 @@ GridPos = Tuple[int, int]
 # === Shape Utilities ===
 
 def place_shape(shape: Shape, anchor: GridPos) -> List[GridPos]:
-    return [(anchor[0] + dq, anchor[1] + dr) for (dq, dr) in shape]
+    aq, ar = anchor
+    placed = []
+    for dq, dr in shape:
+        # Odd-q vertical layout: odd columns are shifted down
+        shift = 1 if (aq % 2 == 1 and dq % 2 != 0) else 0
+        placed.append((aq + dq, ar + dr + shift))
+    return placed
 
 def fits_in_grid(placed_shape: List[GridPos], width: int, height: int) -> bool:
     return all(0 <= q < width and 0 <= r < height for (q, r) in placed_shape)
@@ -164,8 +170,15 @@ if __name__ == "__main__":
         (2, 0)
     ]
 
+    # Green backwards L 3
+    shape6 = [
+        (0, 0),
+        (0, 1),
+        (-1, 1)
+    ]
 
-    shapes = [shape1, shape2, shape3, shape4, shape5]
+
+    shapes = [shape1, shape2, shape3, shape4, shape5, shape6]
     width, height = 6, 5
 
     solution = solve(shapes, width, height)
