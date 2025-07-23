@@ -140,94 +140,104 @@ def draw_hex_grid_with_shapes(width, height, solution):
 # === Example Usage ===
 
 if __name__ == "__main__":
-    # # Fork 7
-    # shape1 = [
-    #     (0, 0),
-    #     (0, 1),
-    #     (0, 2),
-    #     (1, 2),
-    #     (2, 2),
-    #     (2, 1),
-    #     (1, 3),
-    # ]
-    # # Bent 3
-    # shape2 = [
-    #     (1, 0),
-    #     (2, 0),
-    #     (3, 0),
-    # ]
-
-    # # Down 2
-    # shape3 = [
-    #     (0, 0),
-    #     (1, 0)
-    # ]
-
-    # # Straight Up 3
-    # shape4 = [
-    #     (0, 0),
-    #     (0, 1),
-    #     (0, 2)
-    # ]
-    
-    # # Arch 5
-    # shape5 = [
-    #     (1, 1),
-    #     (1, 0),
-    #     (2, 0),
-    #     (3, 0),
-    #     (3, 1)
-    # ]
-
-    #9 Legendary Large
+    # Green 4 up to right
     shape1 = [
-        (-2, 1),
-        (-1, 0),
-        (0, 0),
-        (1, 0),
-        (0, 1),
-        (1, 1),
-        (0, 2),
-        (-1, 2),
-        (0, 3)
-    ]
-
-    # 3 tall offshoot
-    shape2 = [
         (0, 0),
         (0, 1),
-        (1, 1),
-        (0, 2)
-    ]
-
-    # 4 Blue squiggle
-    shape3 = [
-        (-2, 1),
-        (-1, 0),
-        (0, 0),
-        (-1, 1)
-    ]
-
-    # Blue traingle 3
-    shape4 = [
-        (0, 0),
-        (1, 0),
-        (0, 1)
-    ]
-
-    # Green 3 long
-    shape5 = [
-        (0, 0),
         (1, 0),
         (2, 0)
     ]
 
-    # Green backwards L 3
-    shape6 = [
+    # Green f without middle 3
+    shape2 = [
+        (0, 0),
+        (-1, 0),
+        (-1, 1),
+    ]
+
+    # Blue T 5
+    shape3 = [
+        (0, 0),
+        (-1, 0),
+        (1, 0),
+        (0, 1),
+        (0, 2)
+    ]
+
+    # Straight Up 3
+    shape4 = [
         (0, 0),
         (0, 1),
-        (-1, 1)
+        (0, 2)
     ]
+    
+    # Blue W 5
+    shape5 = [
+        (0, 0),
+        (1, 0),
+        (2, 0),
+        (3, 0),
+        (4, 0)
+    ]
+
+    # Purple f without middle 5
+    shape6 = [
+        (0, 0),
+        (-1, 0),
+        (-1, 1),
+        (-1, 2),
+        (-1, 3)
+    ]
+
+    # #9 Legendary Large
+    # shape1 = [
+    #     (-2, 1),
+    #     (-1, 0),
+    #     (0, 0),
+    #     (1, 0),
+    #     (0, 1),
+    #     (1, 1),
+    #     (0, 2),
+    #     (-1, 2),
+    #     (0, 3)
+    # ]
+
+    # # 3 tall offshoot
+    # shape2 = [
+    #     (0, 0),
+    #     (0, 1),
+    #     (1, 1),
+    #     (0, 2)
+    # ]
+
+    # # 4 Blue squiggle
+    # shape3 = [
+    #     (-2, 1),
+    #     (-1, 0),
+    #     (0, 0),
+    #     (-1, 1)
+    # ]
+
+    # # Blue traingle 3
+    # shape4 = [
+    #     (0, 0),
+    #     (1, 0),
+    #     (0, 1)
+    # ]
+
+    # # Green 3 long
+    # shape5 = [
+    #     (0, 0),
+    #     (1, 0),
+    #     (2, 0)
+    # ]
+
+    # # Green backwards L 3
+    # shape6 = [
+    #     (0, 0),
+    #     (0, 1),
+    #     (-1, 1)
+    # ]
 
 
     shapes = [shape1, shape2, shape3, shape4, shape5, shape6]
