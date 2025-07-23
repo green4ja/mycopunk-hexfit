@@ -1,4 +1,8 @@
 from typing import List, Tuple, Set
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import random
+import math
 
 # Type aliases
 Shape = List[Tuple[int, int]]
@@ -84,6 +88,54 @@ def solve(shapes: List[Shape], width: int, height: int) -> List[Tuple[GridPos, L
         return solution
     else:
         return []
+
+# === Drawing Utilities ===
+
+def draw_hex_grid_with_shapes(width, height, solution):
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
+    import random
+    import math
+
+    size = 1
+    dx = size * 3/2
+    dy = size * math.sqrt(3)
+
+    fig_width = width * dx * 0.7
+    fig_height = height * dy * 0.7
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    ax.set_aspect('equal')
+    ax.axis('off')
+
+    # Draw grid (odd-q vertical layout, (0,0) top-left)
+    for q in range(width):
+        for r in range(height):
+            x = dx * q
+            y = dy * r + (dy / 2 if q % 2 == 1 else 0)
+            hexagon = patches.RegularPolygon((x, y), numVertices=6, radius=size * 0.95, orientation=math.radians(30), edgecolor='brown', facecolor='none', linewidth=2)
+            ax.add_patch(hexagon)
+
+    # Assign random colors to shapes
+    colors = []
+    for _ in solution:
+        colors.append([random.random() for _ in range(3)])
+
+    # Draw shapes
+    for idx, (_, cells) in enumerate(solution):
+        color = colors[idx]
+        for (q, r) in cells:
+            x = dx * q
+            y = dy * r + (dy / 2 if q % 2 == 1 else 0)
+            hexagon = patches.RegularPolygon((x, y), numVertices=6, radius=size * 0.85, orientation=math.radians(30), edgecolor='black', facecolor=color, linewidth=2)
+            ax.add_patch(hexagon)
+
+    # Set axis limits to fit grid
+    ax.set_xlim(-size, dx * width + size)
+    ax.set_ylim(-size, dy * height + size)
+    ax.invert_yaxis()  # <-- Flip the image vertically
+
+    plt.tight_layout()
+    plt.show()
 
 # === Example Usage ===
 
@@ -187,5 +239,6 @@ if __name__ == "__main__":
         print("Found solution:")
         for (anchor, cells) in solution:
             print(f"Shape at anchor {anchor}: {cells}")
+        draw_hex_grid_with_shapes(width, height, solution)
     else:
         print("No solution found.")
